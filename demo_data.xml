@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="attendance_threshold_default" model="university.attendance.threshold">
+        <field name="name">Default</field>
+        <field name="good_threshold">85.0</field>
+        <field name="warning_threshold">75.0</field>
+        <field name="critical_threshold">75.0</field>
+    </record>
+
+    <record id="grade_scale_a_plus" model="university.grade.scale">
+        <field name="name">A+</field>
+        <field name="minimum_score">90</field>
+        <field name="maximum_score">100</field>
+        <field name="letter_grade">A+</field>
+        <field name="grade_point">4.0</field>
+    </record>
+    <record id="grade_scale_a" model="university.grade.scale">
+        <field name="name">A</field>
+        <field name="minimum_score">85</field>
+        <field name="maximum_score">89.99</field>
+        <field name="letter_grade">A</field>
+        <field name="grade_point">4.0</field>
+    </record>
+    <record id="grade_scale_a_minus" model="university.grade.scale">
+        <field name="name">A-</field>
+        <field name="minimum_score">80</field>
+        <field name="maximum_score">84.99</field>
+        <field name="letter_grade">A-</field>
+        <field name="grade_point">3.7</field>
+    </record>
+    <record id="grade_scale_b_plus" model="university.grade.scale">
+        <field name="name">B+</field>
+        <field name="minimum_score">75</field>
+        <field name="maximum_score">79.99</field>
+        <field name="letter_grade">B+</field>
+        <field name="grade_point">3.3</field>
+    </record>
+    <record id="grade_scale_b" model="university.grade.scale">
+        <field name="name">B</field>
+        <field name="minimum_score">70</field>
+        <field name="maximum_score">74.99</field>
+        <field name="letter_grade">B</field>
+        <field name="grade_point">3.0</field>
+    </record>
+    <record id="grade_scale_b_minus" model="university.grade.scale">
+        <field name="name">B-</field>
+        <field name="minimum_score">65</field>
+        <field name="maximum_score">69.99</field>
+        <field name="letter_grade">B-</field>
+        <field name="grade_point">2.7</field>
+    </record>
+    <record id="grade_scale_c_plus" model="university.grade.scale">
+        <field name="name">C+</field>
+        <field name="minimum_score">60</field>
+        <field name="maximum_score">64.99</field>
+        <field name="letter_grade">C+</field>
+        <field name="grade_point">2.3</field>
+    </record>
+    <record id="grade_scale_c" model="university.grade.scale">
+        <field name="name">C</field>
+        <field name="minimum_score">50</field>
+        <field name="maximum_score">59.99</field>
+        <field name="letter_grade">C</field>
+        <field name="grade_point">2.0</field>
+    </record>
+    <record id="grade_scale_f" model="university.grade.scale">
+        <field name="name">F</field>
+        <field name="minimum_score">0</field>
+        <field name="maximum_score">49.99</field>
+        <field name="letter_grade">F</field>
+        <field name="grade_point">0.0</field>
+    </record>
+</odoo>

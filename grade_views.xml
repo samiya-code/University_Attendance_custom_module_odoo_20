@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_university_grade_list" model="ir.ui.view">
+        <field name="name">university.grade.list</field>
+        <field name="model">university.grade</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="student_id"/>
+                <field name="course_id"/>
+                <field name="semester_id"/>
+                <field name="assessment_type"/>
+                <field name="score"/>
+                <field name="maximum_score"/>
+                <field name="percentage"/>
+                <field name="letter_grade"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_university_grade_form" model="ir.ui.view">
+        <field name="name">university.grade.form</field>
+        <field name="model">university.grade</field>
+        <field name="arch" type="xml">
+            <form string="Grade">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="student_id"/>
+                            <field name="course_id"/>
+                            <field name="semester_id"/>
+                            <field name="academic_year_id"/>
+                        </group>
+                        <group>
+                            <field name="assessment_type"/>
+                            <field name="score"/>
+                            <field name="maximum_score"/>
+                            <field name="percentage"/>
+                            <field name="letter_grade"/>
+                            <field name="grade_point"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="remarks"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

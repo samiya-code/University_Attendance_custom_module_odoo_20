@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_university_student_dashboard_tree" model="ir.ui.view">
+        <field name="name">university.student.dashboard.list</field>
+        <field name="model">university.student</field>
+        <field name="arch" type="xml">
+            <list string="Student Dashboard">
+                <field name="name"/>
+                <field name="student_id"/>
+                <field name="department_id"/>
+                <field name="program_id"/>
+                <field name="attendance_percentage"/>
+                <field name="risk_level"/>
+                <field name="gpa"/>
+            </list>
+        </field>
+    </record>
+</odoo>

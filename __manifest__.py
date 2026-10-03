@@ -1,0 +1,46 @@
+{
+    'name': 'University Attendance & Academic Monitoring',
+    'version': '1.0',
+    'category': 'Education',
+    'summary': 'Student attendance, course monitoring, academic tracking, and KPI dashboard.',
+    'description': '''
+        University Attendance & Academic Monitoring
+        =========================================
+
+        Manage university departments, programs, sections, courses, enrollment,
+        attendance sessions, attendance records, grade tracking, warnings, and academic performance.
+    ''',
+    'author': 'OpenAI',
+    'website': 'https://example.com',
+    'license': 'LGPL-3',
+    'depends': ['base', 'mail'],
+    'data': [
+        'security/security.xml',
+        'security/ir.model.access.csv',
+        'data/sequence_data.xml',
+        'data/cron_data.xml',
+        'views/student_views.xml',
+        'views/department_views.xml',
+        'views/program_views.xml',
+        'views/course_views.xml',
+        'views/section_views.xml',
+        'views/academic_year_views.xml',
+        'views/semester_views.xml',
+        'views/enrollment_views.xml',
+        'views/attendance_session_views.xml',
+        'views/attendance_views.xml',
+        'views/grade_views.xml',
+        'views/academic_warning_views.xml',
+        'views/dashboard_views.xml',
+        'views/menus.xml',
+        'wizard_views/attendance_import_wizard_views.xml',
+        'reports/attendance_report.xml',
+        'reports/student_report.xml',
+        'reports/academic_report.xml',
+    ],
+    'demo': ['data/demo_data.xml'],
+    'application': True,
+    'installable': True,
+    'auto_install': False,
+    'icon': 'university_attendance/static/description/icon.png',
+}

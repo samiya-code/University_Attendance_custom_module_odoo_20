@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_university_attendance_list" model="ir.ui.view">
+        <field name="name">university.attendance.list</field>
+        <field name="model">university.attendance</field>
+        <field name="arch" type="xml">
+            <list string="Attendance Records" decoration-danger="status == 'absent'" decoration-warning="status == 'late'" decoration-success="status == 'present'">
+                <field name="student_id"/>
+                <field name="course_id"/>
+                <field name="date"/>
+                <field name="status"/>
+                <field name="section_id"/>
+                <field name="semester_id"/>
+                <field name="recorded_by"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_university_attendance_search" model="ir.ui.view">
+        <field name="name">university.attendance.search</field>
+        <field name="model">university.attendance</field>
+        <field name="arch" type="xml">
+            <search string="Search Attendance">
+                <field name="student_id"/>
+                <field name="course_id"/>
+                <field name="status"/>
+                <field name="section_id"/>
+                <filter string="Present" name="present" domain="[('status', '=', 'present')]"/>
+                <filter string="Absent" name="absent" domain="[('status', '=', 'absent')]"/>
+                <filter string="Late" name="late" domain="[('status', '=', 'late')]"/>
+                <filter string="Excused" name="excused" domain="[('status', '=', 'excused')]"/>
+                <filter string="Today" name="today" domain="[('date', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter string="This Week" name="this_week" domain="[('date', '&gt;=', (context_today() - relativedelta(weeks=1)).strftime('%Y-%m-%d'))]"/>
+                <filter string="This Month" name="this_month" domain="[('date', '&gt;=', (context_today() - relativedelta(months=1)).strftime('%Y-%m-%d'))]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Student" name="group_student" context="{'group_by': 'student_id'}"/>
+                    <filter string="Course" name="group_course" context="{'group_by': 'course_id'}"/>
+                    <filter string="Section" name="group_section" context="{'group_by': 'section_id'}"/>
+                    <filter string="Date" name="group_date" context="{'group_by': 'date'}"/>
+                    <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
+                    <filter string="Semester" name="group_semester" context="{'group_by': 'semester_id'}"/>
+                    <filter string="Department" name="group_department" context="{'group_by': 'department_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_university_attendance_form" model="ir.ui.view">
+        <field name="name">university.attendance.form</field>
+        <field name="model">university.attendance</field>
+        <field name="arch" type="xml">
+            <form string="Attendance Record">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="student_id"/>
+                            <field name="session_id"/>
+                            <field name="course_id"/>
+                            <field name="section_id"/>
+                        </group>
+                        <group>
+                            <field name="academic_year_id"/>
+                            <field name="semester_id"/>
+                            <field name="status"/>
+                            <field name="recorded_by"/>
+                            <field name="date"/>
+                            <field name="minutes_late"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="check_in_time"/>
+                        <field name="check_out_time"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

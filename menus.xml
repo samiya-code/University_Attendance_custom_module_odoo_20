@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_university_department" model="ir.actions.act_window">
+        <field name="name">Departments</field>
+        <field name="res_model">university.department</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_university_program" model="ir.actions.act_window">
+        <field name="name">Programs</field>
+        <field name="res_model">university.program</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_university_course" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">university.course</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_university_student" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">university.student</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_university_attendance_session" model="ir.actions.act_window">
+        <field name="name">Attendance Sessions</field>
+        <field name="res_model">university.attendance.session</field>
+        <field name="view_mode">list,calendar,form</field>
+    </record>
+
+    <record id="action_university_attendance" model="ir.actions.act_window">
+        <field name="name">Attendance</field>
+        <field name="res_model">university.attendance</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_university_grade" model="ir.actions.act_window">
+        <field name="name">Grades</field>
+        <field name="res_model">university.grade</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_university_warning" model="ir.actions.act_window">
+        <field name="name">Academic Warnings</field>
+        <field name="res_model">university.academic.warning</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_university_attendance_import_wizard" model="ir.actions.act_window">
+        <field name="name">Import Attendance</field>
+        <field name="res_model">university.attendance.import.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_university_attendance_root" name="University Attendance" sequence="10" groups="base.group_user"/>
+
+    <menuitem id="menu_university_attendance_config" name="Configuration" parent="menu_university_attendance_root" sequence="100"/>
+    <menuitem id="menu_university_department" name="Departments" parent="menu_university_attendance_config" action="action_university_department" sequence="10"/>
+    <menuitem id="menu_university_program" name="Programs" parent="menu_university_attendance_config" action="action_university_program" sequence="20"/>
+    <menuitem id="menu_university_course" name="Courses" parent="menu_university_attendance_config" action="action_university_course" sequence="30"/>
+
+    <menuitem id="menu_university_attendance_operations" name="Operations" parent="menu_university_attendance_root" sequence="20"/>
+    <menuitem id="menu_university_student" name="Students" parent="menu_university_attendance_operations" action="action_university_student" sequence="10"/>
+    <menuitem id="menu_university_attendance_session" name="Attendance Sessions" parent="menu_university_attendance_operations" action="action_university_attendance_session" sequence="20"/>
+    <menuitem id="menu_university_attendance" name="Attendance Records" parent="menu_university_attendance_operations" action="action_university_attendance" sequence="30"/>
+    <menuitem id="menu_university_grade" name="Grades" parent="menu_university_attendance_operations" action="action_university_grade" sequence="40"/>
+    <menuitem id="menu_university_warning" name="Academic Warnings" parent="menu_university_attendance_operations" action="action_university_warning" sequence="50"/>
+
+    <menuitem id="menu_university_attendance_tools" name="Tools" parent="menu_university_attendance_root" sequence="30"/>
+    <menuitem id="menu_university_attendance_import_wizard" name="Import Attendance CSV" parent="menu_university_attendance_tools" action="action_university_attendance_import_wizard" sequence="10"/>
+</odoo>

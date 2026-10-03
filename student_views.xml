@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_university_student_list" model="ir.ui.view">
+        <field name="name">university.student.list</field>
+        <field name="model">university.student</field>
+        <field name="arch" type="xml">
+            <list string="Students" decoration-danger="risk_level == 'at_risk'" decoration-warning="risk_level == 'attention_required'" decoration-success="risk_level == 'normal'">
+                <field name="name"/>
+                <field name="student_id"/>
+                <field name="department_id"/>
+                <field name="program_id"/>
+                <field name="section_id"/>
+                <field name="academic_status"/>
+                <field name="attendance_percentage"/>
+                <field name="gpa"/>
+                <field name="risk_level"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_university_student_search" model="ir.ui.view">
+        <field name="name">university.student.search</field>
+        <field name="model">university.student</field>
+        <field name="arch" type="xml">
+            <search string="Search Students">
+                <field name="name"/>
+                <field name="student_id"/>
+                <field name="registration_number"/>
+                <field name="email"/>
+                <field name="department_id"/>
+                <field name="program_id"/>
+                <field name="section_id"/>
+                <filter string="Active Students" name="active_students" domain="[('active', '=', True)]"/>
+                <filter string="Graduated" name="graduated" domain="[('academic_status', '=', 'graduated')]"/>
+                <filter string="Suspended" name="suspended" domain="[('academic_status', '=', 'suspended')]"/>
+                <filter string="Withdrawn" name="withdrawn" domain="[('academic_status', '=', 'withdrawn')]"/>
+                <filter string="Attendance Below 75%" name="below_75" domain="[('attendance_percentage', '&lt;', 75)]"/>
+                <filter string="At Risk" name="at_risk_students" domain="[('risk_level', '=', 'at_risk')]"/>
+                <filter string="Attention Required" name="attention_required" domain="[('risk_level', '=', 'attention_required')]"/>
+                <filter string="Students With Warnings" name="students_with_warnings" domain="[('warning_ids', '!=', False)]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Department" name="group_department" context="{'group_by': 'department_id'}"/>
+                    <filter string="Program" name="group_program" context="{'group_by': 'program_id'}"/>
+                    <filter string="Section" name="group_section" context="{'group_by': 'section_id'}"/>
+                    <filter string="Academic Year" name="group_academic_year" context="{'group_by': 'academic_year_id'}"/>
+                    <filter string="Semester" name="group_semester" context="{'group_by': 'semester_id'}"/>
+                    <filter string="Academic Status" name="group_academic_status" context="{'group_by': 'academic_status'}"/>
+                    <filter string="Risk Status" name="group_risk_status" context="{'group_by': 'risk_level'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_university_student_form" model="ir.ui.view">
+        <field name="name">university.student.form</field>
+        <field name="model">university.student</field>
+        <field name="arch" type="xml">
+            <form string="Student">
+                <header>
+                    <field name="academic_status" widget="statusbar" statusbar_visible="active,graduated,suspended,withdrawn,on_leave,completed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_attendance" type="object" class="oe_stat_button" icon="fa-calendar-check-o" string="Attendance"/>
+                        <button name="action_view_enrollments" type="object" class="oe_stat_button" icon="fa-book" string="Enrollments"/>
+                        <button name="action_view_warnings" type="object" class="oe_stat_button" icon="fa-warning" string="Warnings"/>
+                    </div>
+                    <field name="photo" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Student Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="student_id"/>
+                            <field name="registration_number"/>
+                            <field name="university_id"/>
+                            <field name="gender"/>
+                            <field name="date_of_birth"/>
+                            <field name="academic_status"/>
+                            <field name="risk_level"/>
+                        </group>
+                        <group>
+                            <field name="department_id"/>
+                            <field name="program_id"/>
+                            <field name="section_id"/>
+                            <field name="academic_year_id"/>
+                            <field name="semester_id"/>
+                            <field name="admission_date"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Personal Information">
+                            <group>
+                                <field name="email"/>
+                                <field name="phone"/>
+                                <field name="address"/>
+                            </group>
+                        </page>
+                        <page string="Attendance">
+                            <group>
+                                <field name="total_sessions"/>
+                                <field name="present_sessions"/>
+                                <field name="absent_sessions"/>
+                                <field name="late_sessions"/>
+                                <field name="excused_sessions"/>
+                                <field name="attendance_percentage"/>
+                            </group>
+                        </page>
+                        <page string="Academic Performance">
+                            <group>
+                                <field name="gpa"/>
+                                <field name="completed_credits"/>
+                                <field name="failed_courses"/>
+                            </group>
+                        </page>
+                        <page string="Warnings">
+                            <field name="warning_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="warning_level"/>
+                                    <field name="status"/>
+                                    <field name="warning_date"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_university_attendance_session_list" model="ir.ui.view">
+        <field name="name">university.attendance.session.list</field>
+        <field name="model">university.attendance.session</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="course_id"/>
+                <field name="section_id"/>
+                <field name="instructor_id"/>
+                <field name="status"/>
+                <field name="topic"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_university_attendance_session_calendar" model="ir.ui.view">
+        <field name="name">university.attendance.session.calendar</field>
+        <field name="model">university.attendance.session</field>
+        <field name="arch" type="xml">
+            <calendar string="Attendance Sessions" date_start="date" mode="month">
+                <field name="course_id"/>
+                <field name="section_id"/>
+                <field name="status"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="view_university_attendance_session_kanban" model="ir.ui.view">
+        <field name="name">university.attendance.session.kanban</field>
+        <field name="model">university.attendance.session</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="status">
+                <field name="name"/>
+                <field name="course_id"/>
+                <field name="status"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div><strong><field name="name"/></strong></div>
+                            <div><field name="course_id"/></div>
+                            <div><field name="date"/></div>
+                            <div><field name="status"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_university_attendance_session_form" model="ir.ui.view">
+        <field name="name">university.attendance.session.form</field>
+        <field name="model">university.attendance.session</field>
+        <field name="arch" type="xml">
+            <form string="Attendance Session">
+                <header>
+                    <button name="action_open" type="object" string="Open Attendance" class="btn-primary" invisible="status != 'draft'"/>
+                    <button name="action_complete" type="object" string="Complete" class="btn-success" invisible="status not in ['open']"/>
+                    <button name="action_cancel" type="object" string="Cancel" class="btn-danger" invisible="status in ['cancelled']"/>
+                    <button name="action_reopen" type="object" string="Reopen" class="btn-secondary" invisible="status != 'cancelled'"/>
+                    <field name="status" widget="statusbar" statusbar_visible="draft,open,completed,cancelled"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="course_id"/>
+                            <field name="section_id"/>
+                            <field name="instructor_id"/>
+                        </group>
+                        <group>
+                            <field name="academic_year_id"/>
+                            <field name="semester_id"/>
+                            <field name="date"/>
+                            <field name="room"/>
+                            <field name="topic"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Attendance Records">
+                            <field name="attendance_ids">
+                                <list editable="bottom">
+                                    <field name="student_id"/>
+                                    <field name="status"/>
+                                    <field name="minutes_late"/>
+                                    <field name="recorded_by"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

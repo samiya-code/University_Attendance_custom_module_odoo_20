@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_university_enrollment_list" model="ir.ui.view">
+        <field name="name">university.course.enrollment.list</field>
+        <field name="model">university.course.enrollment</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="student_id"/>
+                <field name="course_id"/>
+                <field name="section_id"/>
+                <field name="academic_year_id"/>
+                <field name="semester_id"/>
+                <field name="status"/>
+                <field name="enrollment_date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_university_enrollment_form" model="ir.ui.view">
+        <field name="name">university.course.enrollment.form</field>
+        <field name="model">university.course.enrollment</field>
+        <field name="arch" type="xml">
+            <form string="Course Enrollment">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="student_id"/>
+                            <field name="course_id"/>
+                            <field name="section_id"/>
+                        </group>
+                        <group>
+                            <field name="academic_year_id"/>
+                            <field name="semester_id"/>
+                            <field name="status"/>
+                            <field name="enrollment_date"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

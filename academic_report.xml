@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_university_academic_warning" model="ir.actions.report">
+        <field name="name">Academic Warning Report</field>
+        <field name="model">university.academic.warning</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">university_attendance.academic_warning_report</field>
+        <field name="report_file">university_attendance.academic_warning_report</field>
+        <field name="print_report_name">'Academic Warning - %s' % (object.student_id.name)</field>
+    </record>
+
+    <template id="academic_warning_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Academic Warning</h2>
+                        <p>Student: <span t-field="doc.student_id"/></p>
+                        <p>Warning Level: <span t-field="doc.warning_level"/></p>
+                        <p>Attendance Percentage: <span t-field="doc.attendance_percentage"/>%</p>
+                        <p>Threshold: <span t-field="doc.threshold"/>%</p>
+                        <p>Status: <span t-field="doc.status"/></p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

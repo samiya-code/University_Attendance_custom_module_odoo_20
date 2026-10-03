@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_category_university_attendance" model="ir.module.category">
+        <field name="name">University Attendance</field>
+        <field name="description">Permissions for university attendance and academic monitoring</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="group_university_student_user" model="res.groups">
+        <field name="name">Attendance User</field>
+        <field name="category_id" ref="module_category_university_attendance"/>
+    </record>
+
+    <record id="group_university_instructor" model="res.groups">
+        <field name="name">Instructor / Attendance Officer</field>
+        <field name="category_id" ref="module_category_university_attendance"/>
+        <field name="implied_ids" eval="[(4, ref('group_university_student_user'))]"/>
+    </record>
+
+    <record id="group_university_manager" model="res.groups">
+        <field name="name">Academic Manager</field>
+        <field name="category_id" ref="module_category_university_attendance"/>
+        <field name="implied_ids" eval="[(4, ref('group_university_instructor'))]"/>
+    </record>
+
+    <record id="group_university_admin" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="category_id" ref="module_category_university_attendance"/>
+        <field name="implied_ids" eval="[(4, ref('group_university_manager'))]"/>
+    </record>
+</odoo>

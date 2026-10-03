@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_university_academic_warning_list" model="ir.ui.view">
+        <field name="name">university.academic.warning.list</field>
+        <field name="model">university.academic.warning</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="student_id"/>
+                <field name="course_id"/>
+                <field name="warning_level"/>
+                <field name="attendance_percentage"/>
+                <field name="threshold"/>
+                <field name="status"/>
+                <field name="warning_date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_university_academic_warning_form" model="ir.ui.view">
+        <field name="name">university.academic.warning.form</field>
+        <field name="model">university.academic.warning</field>
+        <field name="arch" type="xml">
+            <form string="Academic Warning">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="student_id"/>
+                            <field name="course_id"/>
+                            <field name="semester_id"/>
+                            <field name="academic_year_id"/>
+                        </group>
+                        <group>
+                            <field name="attendance_percentage"/>
+                            <field name="threshold"/>
+                            <field name="warning_level"/>
+                            <field name="warning_date"/>
+                            <field name="status"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

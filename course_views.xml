@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_university_course_list" model="ir.ui.view">
+        <field name="name">university.course.list</field>
+        <field name="model">university.course</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="department_id"/>
+                <field name="program_id"/>
+                <field name="credit_hours"/>
+                <field name="course_type"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_university_course_form" model="ir.ui.view">
+        <field name="name">university.course.form</field>
+        <field name="model">university.course</field>
+        <field name="arch" type="xml">
+            <form string="Course">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="department_id"/>
+                            <field name="program_id"/>
+                        </group>
+                        <group>
+                            <field name="credit_hours"/>
+                            <field name="course_type"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
